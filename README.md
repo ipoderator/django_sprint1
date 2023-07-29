@@ -8,6 +8,7 @@
 - CSS
 - Bootstrap
 - Flake8
+- Markdown 
 
 ## Установить репозиторий по `ssh`:
 ```sh
