@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from django.http import Http404
 
 
 # Create your views here.
@@ -53,9 +54,11 @@ def index(request):
 
 
 def post_detail(request, id):
-    template = 'blog/detail.html'
-    context = {'post': posts[id]}
-    return render(request, template, context)
+    try:
+        context = {'post': posts[id]}
+        return render(request, 'blog/detail.html', context)
+    except context.DoesNotExist:
+        raise Http404("Incorrect request sent")
 
 
 def category_posts(request, category_slug):
