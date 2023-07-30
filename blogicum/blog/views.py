@@ -2,7 +2,6 @@ from django.shortcuts import render
 from django.http import Http404
 
 
-# Create your views here.
 posts = [
     {
         'id': 0,
@@ -57,8 +56,8 @@ def post_detail(request, id):
     try:
         context = {'post': posts[id]}
         return render(request, 'blog/detail.html', context)
-    except context.DoesNotExist:
-        raise Http404("Incorrect request sent")
+    except IndexError:
+        raise Http404("Page doesn't exist")
 
 
 def category_posts(request, category_slug):
